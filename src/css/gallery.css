@@ -1,0 +1,64 @@
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.gallery-item {
+  width: calc((100% - 48px) / 3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 360px;
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.18),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.18);
+}
+
+.gallery-link {
+  color: black;
+}
+
+.gallery-image {
+  object-fit: cover;
+}
+
+.gallery-image:hover {
+  transform: scale(1.05);
+  transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.18),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.18);
+}
+
+.sl-wrapper {
+  background-color: #2e2f42; /* Наприклад, темно-сірий колір */
+}
+
+.sl-wrapper .sl-close {
+  color: #fbfbfb !important;
+  background-color: #2e2f42;
+}
+
+.sl-wrapper .sl-close:hover {
+  color: #000 !important;
+  background-color: #ccc;
+}
+
+.sl-wrapper .sl-navigation button.sl-next {
+  color: #fbfbfb;
+}
+
+.sl-wrapper .sl-navigation button.sl-next:hover {
+  color: #000;
+  background-color: #ccc;
+}
+
+.sl-wrapper .sl-navigation button.sl-prev {
+  color: #fbfbfb;
+}
+
+.sl-wrapper .sl-navigation button.sl-prev:hover {
+  color: #000;
+  background-color: #ccc;
+}
