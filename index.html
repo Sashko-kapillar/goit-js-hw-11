@@ -1,39 +1,23 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Goit-js-hw-09</title>
-    <link rel="stylesheet" href="./css/styles.css" />
-    <link rel="stylesheet" crossorigin href="/goit-js-hw-11/assets/styles-CK3mp9yI.css">
-  </head>
-  <body>
-    <main>
-      <ul>
-        <li><a href="./1-gallery.html">this gallery</a></li>
-        <li><a href="./2-form.html">this form</a></li>
-      </ul>
-    </main>
-  </body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/goit-js-hw-11/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
+    <title>Homework 11</title>
+    <script type="module" crossorigin src="/goit-js-hw-11/index.js"></script>
+    <link rel="modulepreload" crossorigin href="/goit-js-hw-11/assets/vendor-Dp7Ig4E2.js">
+    <link rel="stylesheet" crossorigin href="/goit-js-hw-11/assets/vendor-CWKLx11g.css">
+    <link rel="stylesheet" crossorigin href="/goit-js-hw-11/assets/index-CLOi1yC-.css">
   </head>
   <body>
-    <ul class="nav-list">
-      <li class="nav-item">
-        <a href="./1-gallery.html" class="nav-link">Gallery</a>
-      </li>
-      <li class="nav-item">
-        <a href="./2-form.html" class="nav-link">Form</a>
-      </li>
-    </ul>
+    <form class="search-form" autocomplete="off">
+      <input type="search" name="search" autofocus />
+      <button type="submit">Search</button>
+    </form>
+    <ul class="gallery"></ul>
+
+    <div class="loader"></div>
+
   </body>
 </html>
