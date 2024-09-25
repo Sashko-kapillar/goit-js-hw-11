@@ -21,6 +21,7 @@ searchForm.addEventListener('submit', event => {
     )
     .then(response => {
       const hits = response.data.hits;
+      console.log(hits);
 
       if (hits.length === 0) {
         iziToast.show({
