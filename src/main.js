@@ -37,8 +37,7 @@ searchForm.addEventListener('submit', event => {
       } else {
         hits.forEach(hit => {
           const galleryItem = document.createElement('li');
-          const totalImage = hits.length;
-          console.log(totalImage);
+          console.log(hits.length);
           galleryItem.classList.add('gallery-item');
           galleryItem.innerHTML = `
                         <a href="${hit.largeImageURL}">
@@ -47,7 +46,7 @@ searchForm.addEventListener('submit', event => {
                     `;
           gallery.appendChild(galleryItem);
           // Приховати завантажувач (після завершення завантаження)
-          if (totalImage) {
+          if (hits.length) {
             loader.style.display = 'none';
           }
         });
