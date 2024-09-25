@@ -17,7 +17,7 @@ searchForm.addEventListener('submit', event => {
 
   axios
     .get(
-      `https://pixabay.com/api/?key=${apiKey}&q=${searchInput}&image_type=photo&orientation=horizontal&safesearch=true`
+      `https://pixabay.com/api/?key=${apiKey}&q=${searchInput}&image_type=photo&orientation=horizontal&safesearch=true&_limit=9`
     )
     .then(response => {
       const hits = response.data.hits;
