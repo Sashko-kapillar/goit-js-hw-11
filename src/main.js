@@ -17,7 +17,6 @@ searchForm.addEventListener('submit', event => {
   const searchInput = document.querySelector('input[name="search"]').value;
 
   gallery.innerHTML = ''; //Очистити галерею перед новим пошуком
-  localStorage.removeItem('search-form-state');
 
   axios
     .get(
