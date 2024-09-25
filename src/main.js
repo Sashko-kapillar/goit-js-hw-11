@@ -9,9 +9,11 @@ const searchForm = document.querySelector('.search-form');
 const gallery = document.querySelector('.gallery');
 const apiKey = '46100469-a9a71a6d23d5188e64cb63582'; // Замініть на ваш ключ
 const lightbox = new SimpleLightbox('.gallery a');
+const loader = document.querySelector('.loader');
 
 searchForm.addEventListener('submit', event => {
   event.preventDefault();
+  loader.style.display = 'block';
   const searchInput = document.querySelector('input[name="search"]').value;
 
   gallery.innerHTML = ''; //Очистити галерею перед новим пошуком
@@ -35,6 +37,8 @@ searchForm.addEventListener('submit', event => {
       } else {
         hits.forEach(hit => {
           const galleryItem = document.createElement('li');
+          const totalImage = hits.length;
+          console.log(totalImage);
           galleryItem.classList.add('gallery-item');
           galleryItem.innerHTML = `
                         <a href="${hit.largeImageURL}">
@@ -42,13 +46,14 @@ searchForm.addEventListener('submit', event => {
                         </a>
                     `;
           gallery.appendChild(galleryItem);
+          // Приховати завантажувач (після завершення завантаження)
+          if (totalImage) {
+            loader.style.display = 'none';
+          }
         });
 
         lightbox.refresh(); // для оновлення SimpleLightbox
       }
-
-      // Приховати завантажувач (після завершення завантаження)
-      loader.style.display = 'none';
     })
     .catch(error => {
       // console.error(error);
