@@ -3,7 +3,6 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import axios from 'axios';
-// import { pixabay } from './js/pixabay-api';
 
 const searchForm = document.querySelector('.search-form');
 const gallery = document.querySelector('.gallery');
@@ -13,10 +12,8 @@ const loader = document.querySelector('.loader');
 
 searchForm.addEventListener('submit', event => {
   event.preventDefault();
-  loader.style.display = 'block';
   const searchInput = document.querySelector('input[name="search"]').value;
-
-  gallery.innerHTML = ''; //Очистити галерею перед новим пошуком
+  gallery.innerHTML = ''; // Очистити галерею перед новим пошуком
 
   axios
     .get(
@@ -34,34 +31,40 @@ searchForm.addEventListener('submit', event => {
           position: 'topCenter',
         });
       } else {
+        loader.style.display = 'block';
+        const totalImages = hits.length;
+        let loadedImages = 0; // Кількість завантажених зображень
+
         hits.forEach(hit => {
           const galleryItem = document.createElement('li');
-          console.log(hits.length);
           galleryItem.classList.add('gallery-item');
           galleryItem.innerHTML = `
-                        <a href="${hit.largeImageURL}">
-                            <img src="${hit.webformatURL}" alt="${hit.tags}" class="gallery-image">
-                        </a>
-                    `;
+            <a href="${hit.largeImageURL}">
+              <img src="${hit.webformatURL}" alt="${hit.tags}" class="gallery-image">
+            </a>
+          `;
           gallery.appendChild(galleryItem);
-          // Приховати завантажувач (після завершення завантаження)
-          if (hits.length) {
-            loader.style.display = 'none';
-          }
+
+          // Оновлення прогресу завантаження після завантаження кожного зображення
+          const image = galleryItem.querySelector('.gallery-image');
+          image.onload = () => {
+            loadedImages++;
+            if (loadedImages === totalImages) {
+              loader.style.display = 'none'; // Приховати завантажувач після завантаження всіх зображень
+            }
+          };
         });
 
-        lightbox.refresh(); // для оновлення SimpleLightbox
+        lightbox.refresh(); // Оновити SimpleLightbox
       }
     })
     .catch(error => {
-      // console.error(error);
-      if ((error = false)) {
-        iziToast.show({
-          title: 'Error',
-          message: 'Error - while loading images. Please open new images',
-          color: 'red',
-          position: 'topCenter',
-        });
-      }
+      console.error(error); // Вивести помилку в консоль для відлагодження
+      iziToast.show({
+        title: 'Error',
+        message: 'Error - while loading images. Please open new images',
+        color: 'red',
+        position: 'topCenter',
+      });
     });
 });
